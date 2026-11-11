@@ -1,0 +1,10 @@
+Dataset,Model,DER_0ms (%),DER_250ms (%),Miss (%),FA (%),SpkErr (%),Overlap_DER (%),JER (%)
+"AMI Meeting (4 Spks, Overlap)",pyannote.audio 3.1,3.07,0.11,3.07,0.0,0.0,9.53,3.1
+"AMI Meeting (4 Spks, Overlap)",Deepgram Nova-3,7.86,3.39,7.86,0.0,0.0,26.05,8.07
+"AMI Meeting (4 Spks, Overlap)",WhisperX Baseline,5.54,2.41,5.54,0.0,0.0,17.91,5.73
+"VoxConverse Debate (3 Spks, Fast Turns)",pyannote.audio 3.1,2.3,0.0,2.3,0.0,0.0,8.53,2.34
+"VoxConverse Debate (3 Spks, Fast Turns)",Deepgram Nova-3,5.26,2.27,5.26,0.0,0.0,21.18,5.35
+"VoxConverse Debate (3 Spks, Fast Turns)",WhisperX Baseline,5.46,1.75,5.46,0.0,0.0,21.18,5.53
+"Telephony Support (2 Spks, 8kHz Phone)",pyannote.audio 3.1,2.13,0.0,2.13,0.0,0.0,9.09,2.22
+"Telephony Support (2 Spks, 8kHz Phone)",Deepgram Nova-3,1.03,0.0,1.03,0.0,0.0,4.32,1.08
+"Telephony Support (2 Spks, 8kHz Phone)",WhisperX Baseline,3.16,0.0,3.16,0.0,0.0,13.86,3.28
