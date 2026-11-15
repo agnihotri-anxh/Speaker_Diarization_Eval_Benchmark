@@ -15,7 +15,6 @@
     --bg-primary: #0a0d14;
     --bg-secondary: #111622;
     --bg-card: #161c2d;
-    --bg-card-hover: #1c243a;
     --border: #232c42;
     --border-light: #2d3854;
     --text-primary: #f1f5f9;
@@ -98,7 +97,6 @@
     color: var(--text-secondary);
     cursor: pointer;
     border: 1px solid transparent;
-    transition: all 0.15s ease;
   }
   .nav-tab.active {
     background: #1e293b;
@@ -118,7 +116,6 @@
     border-radius: 6px;
     font-size: 7.5pt;
     font-weight: 600;
-    cursor: pointer;
   }
   .btn-submit {
     background: #2563eb;
@@ -158,7 +155,6 @@
     border-radius: 20px;
     font-size: 7.5pt;
     font-weight: 600;
-    cursor: pointer;
   }
   .filter-pill.active {
     background: #2563eb;
@@ -176,7 +172,6 @@
     padding: 3px 8px;
     font-size: 7.5pt;
     color: var(--text-secondary);
-    cursor: pointer;
     font-weight: 600;
   }
   .switch-btn.selected {
@@ -241,9 +236,6 @@
     padding: 7px 10px;
     border-bottom: 1px solid var(--border);
     color: #cbd5e1;
-  }
-  tbody tr:hover td {
-    background: var(--bg-card);
   }
   tbody tr.top-row td {
     background: rgba(37, 99, 235, 0.05);
@@ -399,7 +391,6 @@
   .turn-1 { background: #059669; }
   .turn-2 { background: #d97706; }
   .turn-overlap { background: #dc2626; }
-  .turn-gap { background: transparent; }
 
   .stat-grid-mini {
     display: grid;
@@ -442,7 +433,6 @@
     <div class="nav-tab">Domain Drilldown</div>
     <div class="nav-tab">Audio Inspector</div>
     <div class="nav-tab">Scoring Methodology</div>
-    <div class="nav-tab">Cost / Latency Calculator</div>
   </div>
   <div class="nav-actions">
     <button class="btn-action">Download CSV</button>
