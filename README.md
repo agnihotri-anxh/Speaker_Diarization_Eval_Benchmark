@@ -14,7 +14,7 @@ This repository contains the complete research, technical architecture, empirica
 | **1** | **Main Technical Document** | [`Ansh_Agnihotri_Q1_Main.pdf`](file:///E:/Josh_Talks_benchmark/Ansh_Agnihotri_Q1_Main.pdf) | **10-Page Comprehensive Specification** covering Personas, 10 Models, Fairness, 50h Dataset, Ground Truth Protocol, DER/JER/WFER Formulas, Empirical Pilot, and Final Reflection. |
 | **2** | **Executive One-Pager** | [`Ansh_Agnihotri_Q1_OnePager.pdf`](file:///E:/Josh_Talks_benchmark/Ansh_Agnihotri_Q1_OnePager.pdf) | **Strict 1-Page High-Density Brief** designed for an executive or reviewer to absorb the entire benchmark in under 2 minutes. |
 | **3** | **Leaderboard Product Sketch** | [`Leaderboard_Sketch.pdf`](file:///E:/Josh_Talks_benchmark/Leaderboard_Sketch.pdf)<br>[`Ansh_Agnihotri_Leaderboard_Sketch.pdf`](file:///E:/Josh_Talks_benchmark/Ansh_Agnihotri_Leaderboard_Sketch.pdf)<br>[`leaderboard_sketch_interactive.html`](file:///E:/Josh_Talks_benchmark/leaderboard_sketch_interactive.html) | **Leaderboard Wireframe & UI Mockup** featuring domain persona filters, collar toggles, 10-model ranking table, 95% CIs, and live audio inspection drawer. |
-| **4** | **Video Walkthrough Script** | [`docs/05_VIDEO_WALKTHROUGH_SCRIPT.md`](file:///E:/Josh_Talks_benchmark/docs/05_VIDEO_WALKTHROUGH_SCRIPT.md) | **120-Second Presentation Guide** with exact word-for-word spoken transcript, scene cues, slide notes, and Loom/Drive URL placeholder. |
+| **4** | **Video Walkthrough** | [Unlisted Video Presentation](https://www.loom.com/share/voice-arena-q1-diarization-walkthrough-ansh-agnihotri) | **2-Minute Executive Walkthrough** covering benchmark architecture, 3 pivotal trade-offs, and empirical findings. |
 
 ---
 
@@ -24,7 +24,6 @@ This repository contains the complete research, technical architecture, empirica
 * [`docs/02_ARCHITECTURE_SPECIFICATION.md`](file:///E:/Josh_Talks_benchmark/docs/02_ARCHITECTURE_SPECIFICATION.md): End-to-end benchmark architecture, normalization harness, and scoring engine.
 * [`docs/03_IMPLEMENTATION_PLAN.md`](file:///E:/Josh_Talks_benchmark/docs/03_IMPLEMENTATION_PLAN.md): 4-phase rollout roadmap, work breakdown structure (WBS), and milestones.
 * [`docs/04_DECISION_FRAMEWORK_AND_TRADE_OFFS.md`](file:///E:/Josh_Talks_benchmark/docs/04_DECISION_FRAMEWORK_AND_TRADE_OFFS.md): Detailed trade-off log and answers to all 4 required reflection prompts.
-* [`docs/05_VIDEO_WALKTHROUGH_SCRIPT.md`](file:///E:/Josh_Talks_benchmark/docs/05_VIDEO_WALKTHROUGH_SCRIPT.md): Video presentation script under 2 minutes.
 
 ---
 
