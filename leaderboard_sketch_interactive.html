@@ -2,513 +2,787 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Voice Arena — Speaker Diarization Public Leaderboard UI Sketch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Arena — Production Speaker Diarization Benchmark & Leaderboard</title>
 <style>
   @page {
     size: A4 landscape;
-    margin: 10mm;
+    margin: 8mm;
   }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #0f172a;
-    color: #f8fafc;
-    margin: 0;
-    padding: 16px;
-    font-size: 9pt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg-primary: #0a0d14;
+    --bg-secondary: #111622;
+    --bg-card: #161c2d;
+    --bg-card-hover: #1c243a;
+    --border: #232c42;
+    --border-light: #2d3854;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-green: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-purple: #8b5cf6;
   }
 
-  /* Header & Navigation */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.45;
+    font-size: 8.5pt;
+    padding: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TOP NAVIGATION */
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #334155;
-    padding-bottom: 12px;
-    margin-bottom: 14px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
   }
-  .brand {
+  .brand-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
-  .logo-icon {
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  .brand-logo {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 900;
-    color: white;
-    font-size: 14pt;
+    font-size: 13pt;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.3);
   }
-  .brand-title {
-    font-size: 14pt;
+  .brand-text h1 {
+    font-size: 12pt;
     font-weight: 800;
     letter-spacing: -0.3px;
     color: #ffffff;
-  }
-  .nav-links {
     display: flex;
-    gap: 16px;
-    font-size: 8.5pt;
-    color: #94a3b8;
+    align-items: center;
+    gap: 8px;
   }
-  .nav-links span.active {
+  .brand-text .version-tag {
+    font-size: 7pt;
+    background: #1e293b;
     color: #38bdf8;
+    border: 1px solid #0284c7;
+    padding: 1px 6px;
+    border-radius: 10px;
     font-weight: 700;
-    border-bottom: 2px solid #38bdf8;
-    padding-bottom: 4px;
+  }
+  .nav-tabs {
+    display: flex;
+    gap: 6px;
+  }
+  .nav-tab {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .nav-tab.active {
+    background: #1e293b;
+    color: #38bdf8;
+    border-color: #334155;
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-action {
+    background: #1e293b;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 7.5pt;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-submit {
+    background: #2563eb;
+    border: 1px solid #3b82f6;
+    color: white;
   }
 
-  /* Control Panel & Filters */
-  .control-panel {
-    background: #1e293b;
-    border: 1px solid #334155;
+  /* CONTROL STRIP & FILTER ROW */
+  .control-strip {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 10px 14px;
-    margin-bottom: 14px;
-  }
-  .filter-row {
+    margin-bottom: 12px;
     display: flex;
-    gap: 16px;
-    align-items: center;
     flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
   }
-  .filter-group {
+  .control-group {
     display: flex;
     align-items: center;
     gap: 6px;
   }
-  .filter-label {
-    font-size: 8pt;
+  .control-label {
+    font-size: 7.5pt;
     font-weight: 700;
-    color: #94a3b8;
+    color: var(--text-muted);
     text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
-  .pill {
-    background: #0f172a;
-    border: 1px solid #475569;
-    color: #cbd5e1;
-    padding: 3px 10px;
+  .filter-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 3px 9px;
     border-radius: 20px;
-    font-size: 8pt;
+    font-size: 7.5pt;
+    font-weight: 600;
     cursor: pointer;
   }
-  .pill.active {
+  .filter-pill.active {
     background: #2563eb;
     border-color: #3b82f6;
     color: white;
-    font-weight: 700;
   }
-  .toggle-switch {
+  .segmented-switch {
     display: flex;
-    background: #0f172a;
-    border: 1px solid #475569;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 6px;
     overflow: hidden;
   }
-  .toggle-opt {
+  .switch-btn {
     padding: 3px 8px;
     font-size: 7.5pt;
-    color: #94a3b8;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
   }
-  .toggle-opt.selected {
-    background: #38bdf8;
-    color: #0f172a;
-    font-weight: 700;
+  .switch-btn.selected {
+    background: #0284c7;
+    color: white;
   }
 
-  /* Table Design */
+  /* BENCHMARK STATS BANNER */
+  .stats-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+  .stat-card .label {
+    font-size: 7pt;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .stat-card .value {
+    font-size: 11pt;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 2px 0;
+  }
+  .stat-card .subtext {
+    font-size: 6.5pt;
+    color: var(--text-secondary);
+  }
+
+  /* LEADERBOARD TABLE */
+  .table-container {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
   table {
     width: 100%;
     border-collapse: collapse;
-    background: #1e293b;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #334155;
-    font-size: 8pt;
-  }
-  th, td {
-    padding: 7px 10px;
+    font-size: 7.5pt;
     text-align: left;
-    border-bottom: 1px solid #334155;
   }
-  th {
-    background: #0f172a;
-    color: #94a3b8;
+  thead th {
+    background: #0d121c;
+    color: var(--text-secondary);
+    padding: 8px 10px;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 7.5pt;
     letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
   }
-  tr:hover td {
-    background: #2d3d54;
+  tbody td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    color: #cbd5e1;
   }
-  .rank-badge {
+  tbody tr:hover td {
+    background: var(--bg-card);
+  }
+  tbody tr.top-row td {
+    background: rgba(37, 99, 235, 0.05);
+  }
+
+  .rank-pill {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
     text-align: center;
     border-radius: 50%;
     font-weight: 800;
-    font-size: 8pt;
+    font-size: 7.5pt;
   }
-  .rank-1 { background: #eab308; color: #000; }
-  .rank-2 { background: #94a3b8; color: #000; }
-  .rank-3 { background: #b45309; color: #fff; }
-  .rank-other { color: #64748b; }
+  .r-1 { background: #f59e0b; color: #000; box-shadow: 0 0 6px rgba(245,158,11,0.4); }
+  .r-2 { background: #94a3b8; color: #000; }
+  .r-3 { background: #b45309; color: #fff; }
+  .r-other { color: var(--text-muted); }
 
+  .model-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
   .model-name {
     font-weight: 700;
     color: #ffffff;
+    font-size: 8pt;
     display: flex;
     align-items: center;
     gap: 6px;
   }
-  .tag {
-    font-size: 7pt;
+  .model-provider {
+    font-size: 6.5pt;
+    color: var(--text-muted);
+  }
+
+  .badge-tag {
+    font-size: 6.5pt;
     padding: 1px 5px;
-    border-radius: 3px;
-    font-weight: 600;
-  }
-  .tag-oss { background: #064e3b; color: #6ee7b7; border: 1px solid #047857; }
-  .tag-cloud { background: #1e3a8a; color: #93c5fd; border: 1px solid #1d4ed8; }
-  .tag-edge { background: #4c1d95; color: #c4b5fd; border: 1px solid #6d28d9; }
-
-  .ci-badge {
-    font-size: 7pt;
-    color: #64748b;
-    margin-left: 2px;
-  }
-  .best-val {
-    color: #4ade80;
-    font-weight: 800;
-  }
-
-  /* Detail Drawer & Bottom Inspection */
-  .inspect-grid {
-    display: flex;
-    gap: 12px;
-    margin-top: 14px;
-  }
-  .inspect-card {
-    flex: 1;
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 8px;
-    padding: 10px;
-  }
-  .inspect-card h3 {
-    margin: 0 0 6px 0;
-    font-size: 8.5pt;
-    color: #38bdf8;
+    border-radius: 4px;
+    font-weight: 700;
     text-transform: uppercase;
   }
-  .timeline {
-    height: 24px;
-    background: #0f172a;
-    border-radius: 4px;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 6px;
+  .b-oss { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+  .b-cloud { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+  .b-edge { background: rgba(139, 92, 246, 0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+
+  .val-best {
+    color: #34d399;
+    font-weight: 800;
   }
-  .time-chunk {
-    height: 100%;
+  .ci-span {
+    font-size: 6.5pt;
+    color: var(--text-muted);
+  }
+
+  .error-bar {
+    display: flex;
+    width: 60px;
+    height: 6px;
+    background: #232c42;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 3px;
+  }
+  .bar-miss { background: var(--accent-red); }
+  .bar-fa { background: var(--accent-amber); }
+  .bar-spk { background: var(--accent-blue); }
+
+  /* AUDIT & INSPECT DRAWER */
+  .inspect-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 12px;
+  }
+  .panel-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .panel-title {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .session-info {
     font-size: 7pt;
+    color: var(--text-muted);
+  }
+
+  .waveform-viz {
+    height: 38px;
+    background: #0b0f19;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    position: relative;
+    overflow: hidden;
   }
-  .c-spk0 { background: #2563eb; color: white; }
-  .c-spk1 { background: #16a34a; color: white; }
-  .c-spk2 { background: #d97706; color: white; }
-  .c-ovlp { background: #dc2626; color: white; }
+  .waveform-bars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 100%;
+    width: 100%;
+    padding: 0 8px;
+  }
+  .w-bar {
+    flex: 1;
+    background: #2563eb;
+    border-radius: 1px;
+    opacity: 0.75;
+  }
+
+  .track-row {
+    margin-bottom: 5px;
+  }
+  .track-label {
+    font-size: 6.5pt;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .timeline-bar {
+    height: 18px;
+    background: #0b0f19;
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+  .turn-block {
+    height: 100%;
+    font-size: 6pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  .turn-0 { background: #2563eb; }
+  .turn-1 { background: #059669; }
+  .turn-2 { background: #d97706; }
+  .turn-overlap { background: #dc2626; }
+  .turn-gap { background: transparent; }
+
+  .stat-grid-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .metric-mini {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 8px;
+  }
+  .metric-mini .k { font-size: 6.5pt; color: var(--text-muted); }
+  .metric-mini .v { font-size: 8.5pt; font-weight: 800; color: #ffffff; }
+
+  .footer-strip {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7pt;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+  }
 </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
-  <div class="brand">
-    <div class="logo-icon">V</div>
-    <div class="brand-title">Voice Arena — Speaker Diarization Benchmark</div>
+  <div class="brand-group">
+    <div class="brand-logo">V</div>
+    <div class="brand-text">
+      <h1>Voice Arena <span class="version-tag">Diarization v2.4</span></h1>
+    </div>
   </div>
-  <div class="nav-links">
-    <span class="active">Public Leaderboard</span>
-    <span>Acoustic Audio Inspector</span>
-    <span>Methodology & Golden Split</span>
-    <span>Submit System API</span>
-    <span>Pricing & Latency Calculator</span>
+  <div class="nav-tabs">
+    <div class="nav-tab active">Leaderboard</div>
+    <div class="nav-tab">Domain Drilldown</div>
+    <div class="nav-tab">Audio Inspector</div>
+    <div class="nav-tab">Scoring Methodology</div>
+    <div class="nav-tab">Cost / Latency Calculator</div>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-action">Download CSV</button>
+    <button class="btn-action btn-submit">+ Submit Engine</button>
   </div>
 </div>
 
-<div class="control-panel">
-  <div class="filter-row">
-    <div class="filter-group">
-      <span class="filter-label">Domain Persona:</span>
-      <span class="pill active">All Domains (50h)</span>
-      <span class="pill">B2B Meetings (3–8 Spks)</span>
-      <span class="pill">Contact Center (8kHz Phone)</span>
-      <span class="pill">Clinical Healthcare</span>
-      <span class="pill">Debates & Media</span>
+<!-- TOP STATS -->
+<div class="stats-banner">
+  <div class="stat-card">
+    <div class="label">Evaluated Systems</div>
+    <div class="value">10 Engines</div>
+    <div class="subtext">3 Self-Hosted OSS • 6 Cloud SaaS • 1 Edge</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Golden Test Corpus</div>
+    <div class="value">50.0 Hours</div>
+    <div class="subtext">250 Stratified Multi-Speaker Sessions</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Primary Ranking Standard</div>
+    <div class="value">DER @ 0ms Collar</div>
+    <div class="subtext">Strict Uncollared Evaluation with Overlap</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Audit Rigor</div>
+    <div class="value">10k Bootstraps</div>
+    <div class="subtext">Empirical 95% Confidence Intervals (p &lt; 0.01)</div>
+  </div>
+</div>
+
+<!-- CONTROL STRIP -->
+<div class="control-strip">
+  <div class="control-group">
+    <span class="control-label">Acoustic Domain:</span>
+    <span class="filter-pill active">All Domains (50h)</span>
+    <span class="filter-pill">B2B Meetings (3–8 Spks)</span>
+    <span class="filter-pill">Telephony (8kHz Phone)</span>
+    <span class="filter-pill">Clinical Consults (Far-Field)</span>
+    <span class="filter-pill">Broadcast Debates</span>
+  </div>
+  <div class="control-group" style="margin-left: auto;">
+    <span class="control-label">Collar Tolerance:</span>
+    <div class="segmented-switch">
+      <span class="switch-btn selected">0ms (Production)</span>
+      <span class="switch-btn">250ms (Academic)</span>
     </div>
-    <div class="filter-group" style="margin-left: auto;">
-      <span class="filter-label">Collar Tolerance:</span>
-      <div class="toggle-switch">
-        <span class="toggle-opt selected">0ms (Strict Real-Time)</span>
-        <span class="toggle-opt">250ms (Academic Std)</span>
-      </div>
-    </div>
-    <div class="filter-group">
-      <span class="filter-label">Speaker Count Prior:</span>
-      <div class="toggle-switch">
-        <span class="toggle-opt selected">Blind (k = Unknown)</span>
-        <span class="toggle-opt">Oracle (k Known)</span>
-      </div>
+  </div>
+  <div class="control-group">
+    <span class="control-label">Speaker Prior:</span>
+    <div class="segmented-switch">
+      <span class="switch-btn selected">Blind (k Unknown)</span>
+      <span class="switch-btn">Oracle (k Known)</span>
     </div>
   </div>
 </div>
 
 <!-- LEADERBOARD TABLE -->
-<table>
-  <thead>
-    <tr>
-      <th style="width: 4%;">Rank</th>
-      <th style="width: 22%;">Model / Engine</th>
-      <th style="width: 10%;">Deployment</th>
-      <th style="width: 11%;">Primary DER (0ms)</th>
-      <th style="width: 9%;">DER (250ms)</th>
-      <th style="width: 9%;">Overlap DER</th>
-      <th style="width: 8%;">JER %</th>
-      <th style="width: 9%;">Word Flop (WFER)</th>
-      <th style="width: 9%;">Latency / RTF</th>
-      <th style="width: 9%;">Cost / 1k Hrs</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="rank-badge rank-1">1</span></td>
-      <td>
-        <div class="model-name">
-          pyannote.audio 3.1
-          <span class="tag tag-oss">Open Source</span>
-        </div>
-      </td>
-      <td>Self-Hosted (A10G)</td>
-      <td><span class="best-val">2.50%</span> <span class="ci-badge">±0.3%</span></td>
-      <td>0.04%</td>
-      <td><span class="best-val">9.05%</span></td>
-      <td>2.55%</td>
-      <td>1.8%</td>
-      <td>0.22 RTF</td>
-      <td>$12.50 (EC2)</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-2">2</span></td>
-      <td>
-        <div class="model-name">
-          Deepgram Nova-3
-          <span class="tag tag-cloud">Cloud API</span>
-        </div>
-      </td>
-      <td>SaaS / Streaming</td>
-      <td>4.72% <span class="ci-badge">±0.4%</span></td>
-      <td>1.89%</td>
-      <td>17.18%</td>
-      <td>4.83%</td>
-      <td>1.2%</td>
-      <td><span class="best-val">190ms (TTFB)</span></td>
-      <td>$258.00</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-3">3</span></td>
-      <td>
-        <div class="model-name">
-          WhisperX + pyannote
-          <span class="tag tag-oss">Pipeline</span>
-        </div>
-      </td>
-      <td>Self-Hosted (A10G)</td>
-      <td>4.72% <span class="ci-badge">±0.4%</span></td>
-      <td>1.39%</td>
-      <td>17.65%</td>
-      <td>4.85%</td>
-      <td><span class="best-val">0.9%</span></td>
-      <td>0.65 RTF</td>
-      <td>$35.00 (EC2)</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-other">4</span></td>
-      <td>
-        <div class="model-name">
-          AssemblyAI Universal-2
-          <span class="tag tag-cloud">Cloud API</span>
-        </div>
-      </td>
-      <td>SaaS REST API</td>
-      <td>5.15% <span class="ci-badge">±0.5%</span></td>
-      <td>2.10%</td>
-      <td>19.80%</td>
-      <td>5.20%</td>
-      <td>1.5%</td>
-      <td>0.18 RTF</td>
-      <td>$390.00</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-other">5</span></td>
-      <td>
-        <div class="model-name">
-          NVIDIA NeMo Sortaformer
-          <span class="tag tag-oss">EEND OSS</span>
-        </div>
-      </td>
-      <td>Triton / TensorRT</td>
-      <td>5.40% <span class="ci-badge">±0.5%</span></td>
-      <td>2.25%</td>
-      <td>16.40%</td>
-      <td>5.50%</td>
-      <td>2.3%</td>
-      <td><span class="best-val">0.08 RTF</span></td>
-      <td>$8.20 (EC2)</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-other">6</span></td>
-      <td>
-        <div class="model-name">
-          Rev AI Diarization
-          <span class="tag tag-cloud">Cloud API</span>
-        </div>
-      </td>
-      <td>SaaS REST API</td>
-      <td>5.65% <span class="ci-badge">±0.5%</span></td>
-      <td>2.40%</td>
-      <td>20.30%</td>
-      <td>5.80%</td>
-      <td>1.4%</td>
-      <td>0.25 RTF</td>
-      <td>$360.00</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-other">7</span></td>
-      <td>
-        <div class="model-name">
-          Google Cloud STT v2
-          <span class="tag tag-cloud">Cloud API</span>
-        </div>
-      </td>
-      <td>Chirp 2 gRPC</td>
-      <td>6.10% <span class="ci-badge">±0.6%</span></td>
-      <td>2.80%</td>
-      <td>22.50%</td>
-      <td>6.40%</td>
-      <td>2.1%</td>
-      <td>0.30 RTF</td>
-      <td>$480.00</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-other">8</span></td>
-      <td>
-        <div class="model-name">
-          AWS Transcribe
-          <span class="tag tag-cloud">Cloud API</span>
-        </div>
-      </td>
-      <td>AWS SDK (boto3)</td>
-      <td>6.85% <span class="ci-badge">±0.6%</span></td>
-      <td>3.10%</td>
-      <td>24.10%</td>
-      <td>7.10%</td>
-      <td>2.6%</td>
-      <td>0.35 RTF</td>
-      <td>$600.00</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-other">9</span></td>
-      <td>
-        <div class="model-name">
-          Picovoice Falcon
-          <span class="tag tag-edge">Edge SDK</span>
-        </div>
-      </td>
-      <td>On-Device CPU</td>
-      <td>7.30% <span class="ci-badge">±0.7%</span></td>
-      <td>3.60%</td>
-      <td>28.50%</td>
-      <td>7.60%</td>
-      <td>N/A</td>
-      <td><span class="best-val">0.03 RTF</span></td>
-      <td>$0.00 (Local)</td>
-    </tr>
-    <tr>
-      <td><span class="rank-badge rank-other">10</span></td>
-      <td>
-        <div class="model-name">
-          Azure Cognitive Speech
-          <span class="tag tag-cloud">Cloud API</span>
-        </div>
-      </td>
-      <td>Cloud SDK / Docker</td>
-      <td>7.45% <span class="ci-badge">±0.7%</span></td>
-      <td>3.75%</td>
-      <td>26.90%</td>
-      <td>7.70%</td>
-      <td>2.4%</td>
-      <td>0.28 RTF</td>
-      <td>$420.00</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 4%;">Rank</th>
+        <th style="width: 23%;">Model / Pipeline</th>
+        <th style="width: 10%;">Deployment</th>
+        <th style="width: 11%;">Primary DER (0ms)</th>
+        <th style="width: 8%;">DER (250ms)</th>
+        <th style="width: 9%;">Overlap DER</th>
+        <th style="width: 7%;">JER %</th>
+        <th style="width: 9%;">Word Flop (WFER)</th>
+        <th style="width: 9%;">Latency / RTF</th>
+        <th style="width: 10%;">Cost / 1k Audio Hrs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="top-row">
+        <td><span class="rank-pill r-1">1</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">pyannote.audio 3.1 <span class="badge-tag b-oss">OSS</span></span>
+            <span class="model-provider">Hervé Bredin / Hugging Face</span>
+          </div>
+        </td>
+        <td>Self-Hosted (A10G)</td>
+        <td>
+          <span class="val-best">2.50%</span> <span class="ci-span">±0.3%</span>
+          <div class="error-bar"><div class="bar-miss" style="width: 60%;"></div><div class="bar-fa" style="width: 20%;"></div><div class="bar-spk" style="width: 20%;"></div></div>
+        </td>
+        <td>0.04%</td>
+        <td><span class="val-best">9.05%</span></td>
+        <td>2.55%</td>
+        <td>1.8%</td>
+        <td>0.22 RTF</td>
+        <td>$12.50 (EC2 g5.xlarge)</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-2">2</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">Deepgram Nova-3 <span class="badge-tag b-cloud">API</span></span>
+            <span class="model-provider">Deepgram Inc. (Multi-task)</span>
+          </div>
+        </td>
+        <td>Cloud SaaS / Streaming</td>
+        <td>
+          4.72% <span class="ci-span">±0.4%</span>
+          <div class="error-bar"><div class="bar-miss" style="width: 75%;"></div><div class="bar-fa" style="width: 10%;"></div><div class="bar-spk" style="width: 15%;"></div></div>
+        </td>
+        <td>1.89%</td>
+        <td>17.18%</td>
+        <td>4.83%</td>
+        <td>1.2%</td>
+        <td><span class="val-best">190ms TTFB</span></td>
+        <td>$258.00</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-3">3</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">WhisperX + pyannote <span class="badge-tag b-oss">Pipeline</span></span>
+            <span class="model-provider">m-bain / Open Source</span>
+          </div>
+        </td>
+        <td>Self-Hosted (A10G)</td>
+        <td>
+          4.72% <span class="ci-span">±0.4%</span>
+          <div class="error-bar"><div class="bar-miss" style="width: 65%;"></div><div class="bar-fa" style="width: 15%;"></div><div class="bar-spk" style="width: 20%;"></div></div>
+        </td>
+        <td>1.39%</td>
+        <td>17.65%</td>
+        <td>4.85%</td>
+        <td><span class="val-best">0.9%</span></td>
+        <td>0.65 RTF</td>
+        <td>$35.00 (EC2 g5.xlarge)</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-other">4</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">AssemblyAI Universal-2 <span class="badge-tag b-cloud">API</span></span>
+            <span class="model-provider">AssemblyAI</span>
+          </div>
+        </td>
+        <td>Cloud SaaS REST</td>
+        <td>5.15% <span class="ci-span">±0.5%</span></td>
+        <td>2.10%</td>
+        <td>19.80%</td>
+        <td>5.20%</td>
+        <td>1.5%</td>
+        <td>0.18 RTF</td>
+        <td>$390.00</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-other">5</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">NVIDIA NeMo Sortaformer <span class="badge-tag b-oss">EEND</span></span>
+            <span class="model-provider">NVIDIA AI Research</span>
+          </div>
+        </td>
+        <td>Triton / TensorRT</td>
+        <td>5.40% <span class="ci-span">±0.5%</span></td>
+        <td>2.25%</td>
+        <td>16.40%</td>
+        <td>5.50%</td>
+        <td>2.3%</td>
+        <td><span class="val-best">0.08 RTF</span></td>
+        <td>$8.20 (EC2 g5.xlarge)</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-other">6</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">Rev AI Diarization <span class="badge-tag b-cloud">API</span></span>
+            <span class="model-provider">Rev.com</span>
+          </div>
+        </td>
+        <td>Cloud SaaS REST</td>
+        <td>5.65% <span class="ci-span">±0.5%</span></td>
+        <td>2.40%</td>
+        <td>20.30%</td>
+        <td>5.80%</td>
+        <td>1.4%</td>
+        <td>0.25 RTF</td>
+        <td>$360.00</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-other">7</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">Google Cloud STT v2 <span class="badge-tag b-cloud">API</span></span>
+            <span class="model-provider">Google Cloud (Chirp 2)</span>
+          </div>
+        </td>
+        <td>Cloud gRPC</td>
+        <td>6.10% <span class="ci-span">±0.6%</span></td>
+        <td>2.80%</td>
+        <td>22.50%</td>
+        <td>6.40%</td>
+        <td>2.1%</td>
+        <td>0.30 RTF</td>
+        <td>$480.00</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-other">8</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">AWS Transcribe <span class="badge-tag b-cloud">API</span></span>
+            <span class="model-provider">Amazon Web Services</span>
+          </div>
+        </td>
+        <td>Cloud SDK (boto3)</td>
+        <td>6.85% <span class="ci-span">±0.6%</span></td>
+        <td>3.10%</td>
+        <td>24.10%</td>
+        <td>7.10%</td>
+        <td>2.6%</td>
+        <td>0.35 RTF</td>
+        <td>$600.00</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-other">9</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">Picovoice Falcon <span class="badge-tag b-edge">Edge</span></span>
+            <span class="model-provider">Picovoice Inc.</span>
+          </div>
+        </td>
+        <td>Local Edge CPU</td>
+        <td>7.30% <span class="ci-span">±0.7%</span></td>
+        <td>3.60%</td>
+        <td>28.50%</td>
+        <td>7.60%</td>
+        <td>N/A</td>
+        <td><span class="val-best">0.03 RTF</span></td>
+        <td>$0.00 (Local Compute)</td>
+      </tr>
+      <tr>
+        <td><span class="rank-pill r-other">10</span></td>
+        <td>
+          <div class="model-cell">
+            <span class="model-name">Azure Cognitive Speech <span class="badge-tag b-cloud">API</span></span>
+            <span class="model-provider">Microsoft Azure</span>
+          </div>
+        </td>
+        <td>Cloud / Container</td>
+        <td>7.45% <span class="ci-span">±0.7%</span></td>
+        <td>3.75%</td>
+        <td>26.90%</td>
+        <td>7.70%</td>
+        <td>2.4%</td>
+        <td>0.28 RTF</td>
+        <td>$420.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<!-- BOTTOM DRILL-DOWN / AUDIO INSPECTOR -->
-<div class="inspect-grid">
-  <div class="inspect-card" style="flex: 1.5;">
-    <h3>Live Audio Inspector: Selected Recording (AMI_ES2004a — Overlapping Meeting)</h3>
-    <div style="font-size: 7.5pt; color: #94a3b8; margin-bottom: 4px;">
-      Ground-Truth Reference (Adjudicated RTTM):
+<!-- AUDIT & INSPECT DRAWER -->
+<div class="inspect-section">
+  <!-- AUDIO TIMELINE INSPECTOR -->
+  <div class="panel-box">
+    <div class="panel-title">
+      <span>Acoustic Session Inspector</span>
+      <span class="session-info">File: <code>AMI_ES2004a_mix.wav</code> (4 Speakers • High Overlap)</span>
     </div>
-    <div class="timeline">
-      <div class="time-chunk c-spk0" style="width: 25%;">Spk 0: PM</div>
-      <div class="time-chunk c-ovlp" style="width: 15%;">OVERLAP</div>
-      <div class="time-chunk c-spk1" style="width: 20%;">Spk 1: ID</div>
-      <div class="time-chunk c-spk2" style="width: 40%;">Spk 2: ME</div>
+
+    <!-- SYNTHETIC WAVEFORM -->
+    <div class="waveform-viz">
+      <div class="waveform-bars">
+        <div class="w-bar" style="height: 30%;"></div><div class="w-bar" style="height: 55%;"></div><div class="w-bar" style="height: 80%;"></div><div class="w-bar" style="height: 95%;"></div><div class="w-bar" style="height: 60%;"></div><div class="w-bar" style="height: 20%;"></div><div class="w-bar" style="height: 85%;"></div><div class="w-bar" style="height: 100%;"></div><div class="w-bar" style="height: 75%;"></div><div class="w-bar" style="height: 40%;"></div><div class="w-bar" style="height: 90%;"></div><div class="w-bar" style="height: 65%;"></div><div class="w-bar" style="height: 35%;"></div><div class="w-bar" style="height: 70%;"></div><div class="w-bar" style="height: 85%;"></div><div class="w-bar" style="height: 45%;"></div><div class="w-bar" style="height: 25%;"></div><div class="w-bar" style="height: 60%;"></div><div class="w-bar" style="height: 95%;"></div><div class="w-bar" style="height: 70%;"></div><div class="w-bar" style="height: 30%;"></div>
+      </div>
     </div>
-    <div style="font-size: 7.5pt; color: #94a3b8; margin-bottom: 4px;">
-      pyannote.audio 3.1 Prediction (Correctly captures overlap segment):
+
+    <!-- TRACK 1: GROUND TRUTH -->
+    <div class="track-row">
+      <div class="track-label">Reference Ground Truth (Adjudicated RTTM):</div>
+      <div class="timeline-bar">
+        <div class="turn-block turn-0" style="width: 25%;">Speaker 0 (PM)</div>
+        <div class="turn-block turn-overlap" style="width: 14%;">OVERLAP (0+1)</div>
+        <div class="turn-block turn-1" style="width: 21%;">Speaker 1 (DevOps)</div>
+        <div class="turn-block turn-2" style="width: 40%;">Speaker 2 (Design)</div>
+      </div>
     </div>
-    <div class="timeline">
-      <div class="time-chunk c-spk0" style="width: 24%;">Py_0</div>
-      <div class="time-chunk c-ovlp" style="width: 14%;">Py_0 + Py_1</div>
-      <div class="time-chunk c-spk1" style="width: 21%;">Py_1</div>
-      <div class="time-chunk c-spk2" style="width: 41%;">Py_2</div>
+
+    <!-- TRACK 2: PYANNOTE PREDICTION -->
+    <div class="track-row">
+      <div class="track-label">pyannote.audio 3.1 (Correctly detects cross-talk turn):</div>
+      <div class="timeline-bar">
+        <div class="turn-block turn-0" style="width: 24%;">Py_0</div>
+        <div class="turn-block turn-overlap" style="width: 13%;">Py_0 + Py_1</div>
+        <div class="turn-block turn-1" style="width: 22%;">Py_1</div>
+        <div class="turn-block turn-2" style="width: 41%;">Py_2</div>
+      </div>
     </div>
-    <div style="font-size: 7.5pt; color: #94a3b8; margin-bottom: 4px;">
-      Deepgram Nova-3 Prediction (Merges overlap turn late):
-    </div>
-    <div class="timeline">
-      <div class="time-chunk c-spk0" style="width: 32%;">DG_0 (Extended)</div>
-      <div class="time-chunk c-spk1" style="width: 27%;">DG_1 (Late)</div>
-      <div class="time-chunk c-spk2" style="width: 41%;">DG_2</div>
+
+    <!-- TRACK 3: DEEPGRAM PREDICTION -->
+    <div class="track-row">
+      <div class="track-label">Deepgram Nova-3 (Lags on overlap onset; merges speakers):</div>
+      <div class="timeline-bar">
+        <div class="turn-block turn-0" style="width: 32%;">DG_0 (Extended)</div>
+        <div class="turn-block turn-1" style="width: 27%;">DG_1 (Delayed onset)</div>
+        <div class="turn-block turn-2" style="width: 41%;">DG_2</div>
+      </div>
     </div>
   </div>
 
-  <div class="inspect-card">
-    <h3>Statistical Significance Matrix</h3>
-    <p style="font-size: 7.5pt; color: #cbd5e1; margin-bottom: 6px;">
-      Bootstrap Resampling (10,000 iterations, p &lt; 0.01):
+  <!-- AUDIT & DECISION PANEL -->
+  <div class="panel-box">
+    <div class="panel-title">
+      <span>Statistical Decision Audit</span>
+      <span class="session-info">p &lt; 0.01 Threshold</span>
+    </div>
+    
+    <div class="stat-grid-mini" style="margin-bottom: 8px;">
+      <div class="metric-mini">
+        <div class="k">pyannote Meeting Win</div>
+        <div class="v" style="color: #34d399;">p = 0.0004</div>
+      </div>
+      <div class="metric-mini">
+        <div class="k">Deepgram Phone Win</div>
+        <div class="v" style="color: #38bdf8;">p = 0.0012</div>
+      </div>
+    </div>
+
+    <p style="font-size: 7pt; color: #94a3b8; line-height: 1.4; margin-bottom: 6px;">
+      <strong>Audit Finding:</strong> No single system dominates all use cases. <strong>pyannote 3.1</strong> delivers 3x lower overlap error on team meetings. <strong>Deepgram Nova-3</strong> delivers lowest latency (190ms) and lowest telephony error (1.03%) on 8kHz audio.
     </p>
-    <ul style="font-size: 7.5pt; color: #94a3b8; padding-left: 14px; margin: 0;">
-      <li><strong>pyannote 3.1</strong> significantly beats <strong>Deepgram</strong> on B2B Meetings (p = 0.0004).</li>
-      <li><strong>Deepgram Nova-3</strong> significantly beats <strong>pyannote</strong> on 8kHz Telephony (p = 0.0012).</li>
-      <li><strong>WhisperX</strong> & <strong>Deepgram</strong> are statistically tied on global DER (p = 0.48).</li>
-    </ul>
+
+    <div style="font-size: 6.5pt; color: var(--text-muted); background: var(--bg-card); padding: 5px 8px; border-radius: 4px; border: 1px solid var(--border);">
+      🔒 <strong>Golden Test Protection:</strong> All evaluations execute against an unreleased, contamination-proof 50-hour proprietary corpus.
+    </div>
   </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-strip">
+  <div>Voice Arena Benchmark Platform • Author: <strong>Ansh Agnihotri</strong> • Lead Research & Product Evaluation</div>
+  <div>Methodology: dscore / NIST MD-Eval Standard • License: Apache 2.0 • Data Integrity Verified</div>
 </div>
 
 </body>
 </html>
-

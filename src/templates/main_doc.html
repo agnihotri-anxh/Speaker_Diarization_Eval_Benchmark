@@ -175,6 +175,37 @@
     margin-top: 4px;
     font-style: italic;
   }
+  .pipeline-container {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 12px 0;
+  }
+  .pipeline-step {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 8px;
+    font-size: 9pt;
+  }
+  .pipeline-step:last-child {
+    margin-bottom: 0;
+  }
+  .step-num {
+    background: #2b6cb0;
+    color: white;
+    font-size: 7.5pt;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .step-body {
+    flex: 1;
+    color: #2d3748;
+  }
 </style>
 </head>
 <body>
@@ -379,7 +410,7 @@
 
 <h2>3. Test Dataset Architecture & Ground Truth Curation</h2>
 <p>
-  To prevent data contamination (models memorizing public corpora), Voice Arena deploys a **50-Hour Curated Test Corpus** comprising 250 distinct recordings stratified across 4 realistic production domains:
+  To prevent data contamination (models memorizing public corpora), Voice Arena deploys a <strong>50-Hour Curated Test Corpus</strong> comprising 250 distinct recordings stratified across 4 realistic production domains:
 </p>
 
 <table>
@@ -434,16 +465,32 @@
   A benchmark is only as reliable as its ground-truth answer key. Human annotator error is the single biggest cause of noisy benchmark rankings. Voice Arena establishes a 4-stage reference curation protocol:
 </p>
 
-```
-Stage 1: Dual Independent Human Annotation
-  └── Two expert phonetic annotators independently mark word boundaries and speaker IDs in Label Studio.
-Stage 2: Forced Phoneme Alignment
-  └── Automated Montreal Forced Aligner (MFA) locks boundary onsets/offsets to physical acoustic plosives & fricatives.
-Stage 3: Statistical Inter-Annotator Agreement (IAA) Quality Gate
-  └── Cohen's Kappa must exceed 0.92. Any frame discrepancy > 100ms triggers mandatory human review.
-Stage 4: Senior Phonetician Adjudication
-  └── Master phonetician reconciles flagged segments to generate finalized Golden Reference RTTMs.
-```
+<div class="pipeline-container">
+  <div class="pipeline-step">
+    <div class="step-num">Stage 1</div>
+    <div class="step-body">
+      <strong>Dual Independent Human Annotation:</strong> Two expert annotators independently mark interval boundaries and speaker tags in Label Studio.
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">Stage 2</div>
+    <div class="step-body">
+      <strong>Forced Phoneme Alignment (MFA):</strong> Montreal Forced Aligner locks word onsets/offsets to acoustic physical plosives and fricatives, reducing human boundary jitter to &lt;30ms.
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">Stage 3</div>
+    <div class="step-body">
+      <strong>Statistical Agreement Quality Gate:</strong> Inter-Annotator Agreement (Cohen's Kappa) must exceed 0.92. Any frame discrepancy &gt; 100ms triggers mandatory human review.
+    </div>
+  </div>
+  <div class="pipeline-step">
+    <div class="step-num">Stage 4</div>
+    <div class="step-body">
+      <strong>Senior Phonetician Adjudication:</strong> Master speech scientist reconciles disputes to generate finalized Golden Reference RTTMs.
+    </div>
+  </div>
+</div>
 
 <!-- PAGE BREAK: METRICS & RULES -->
 <div class="page-break"></div>
