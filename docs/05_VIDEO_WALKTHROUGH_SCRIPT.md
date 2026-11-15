@@ -4,11 +4,11 @@
 ---
 
 ### Video Metadata & Submission Details
-* **Presenter:** Voice Arena Candidate
+* **Presenter:** Ansh Agnihotri
 * **Target Duration:** 1 minute 55 seconds (Under 2:00 hard ceiling)
 * **Pacing:** ~135 words per minute (Total Word Count: ~255 words)
 * **Recording Recommendation:** Loom, unlisted YouTube, or Google Drive screen-share walkthrough.
-* **Video Submission URL Placeholder:** `https://www.loom.com/share/voice-arena-q1-diarization-walkthrough-candidate` *(Replace with your finalized recorded link)*
+* **Video Submission URL Placeholder:** `https://www.loom.com/share/voice-arena-q1-diarization-walkthrough-ansh-agnihotri` *(Replace with your finalized recorded link)*
 
 ---
 
@@ -34,7 +34,7 @@ Visual: Display Figure 3 (Multi-Dimensional Radar) & DIHARD III Citation Callout
 ### Word-for-Word Narration Script (With Precise Timestamps)
 
 #### [00:00 - 00:25] 1. The Purpose & Target Audience
-> *"Hi everyone, I’m excited to present the Voice Arena Speaker Diarization Benchmark.*  
+> *"Hi everyone, I’m Ansh Agnihotri, and I’m excited to present the Voice Arena Speaker Diarization Benchmark.*  
 > *Today, every voice vendor claims '99% accuracy' in marketing demos, but in production—when people talk over each other, or speak on 8 kHz phone lines—these systems collapse.*  
 > *We designed Voice Arena as an independent, product-focused leaderboard. It is built specifically for three buyer personas: **B2B meeting assistants** like Notion and Zoom, **high-volume contact centers** like Gong, and **ambient clinical scribes** like Abridge, helping them make rigorous build-versus-buy decisions."*
 

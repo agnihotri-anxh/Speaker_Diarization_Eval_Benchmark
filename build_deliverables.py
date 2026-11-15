@@ -34,7 +34,7 @@ def main():
     main_html = main_html.replace("{{CHART_COLLAR}}", chart_collar)
     main_html = main_html.replace("{{CHART_RADAR}}", chart_radar)
 
-    main_html_path = os.path.join(build_dir, "Firstname_Lastname_Q1_Main.html")
+    main_html_path = os.path.join(build_dir, "Ansh_Agnihotri_Q1_Main.html")
     with open(main_html_path, "w", encoding="utf-8") as f:
         f.write(main_html)
     print(f"Resolved Main Document HTML -> {main_html_path}")
@@ -43,7 +43,7 @@ def main():
     with open("src/templates/one_pager.html", "r", encoding="utf-8") as f:
         one_pager_html = f.read()
 
-    one_pager_html_path = os.path.join(build_dir, "Firstname_Lastname_Q1_OnePager.html")
+    one_pager_html_path = os.path.join(build_dir, "Ansh_Agnihotri_Q1_OnePager.html")
     with open(one_pager_html_path, "w", encoding="utf-8") as f:
         f.write(one_pager_html)
     print(f"Resolved One-Pager HTML -> {one_pager_html_path}")
@@ -52,7 +52,7 @@ def main():
     with open("src/templates/leaderboard_sketch.html", "r", encoding="utf-8") as f:
         sketch_html = f.read()
 
-    sketch_html_path = os.path.join(build_dir, "Leaderboard_Sketch.html")
+    sketch_html_path = os.path.join(build_dir, "Ansh_Agnihotri_Leaderboard_Sketch.html")
     with open(sketch_html_path, "w", encoding="utf-8") as f:
         f.write(sketch_html)
     # Also save a copy as root interactive file
@@ -68,8 +68,9 @@ def main():
     print(f"Using browser binary: {chrome_path}")
 
     tasks = [
-        ("Firstname_Lastname_Q1_Main.pdf", main_html_path, False),
-        ("Firstname_Lastname_Q1_OnePager.pdf", one_pager_html_path, False),
+        ("Ansh_Agnihotri_Q1_Main.pdf", main_html_path, False),
+        ("Ansh_Agnihotri_Q1_OnePager.pdf", one_pager_html_path, False),
+        ("Ansh_Agnihotri_Leaderboard_Sketch.pdf", sketch_html_path, True),
         ("Leaderboard_Sketch.pdf", sketch_html_path, True)
     ]
 
