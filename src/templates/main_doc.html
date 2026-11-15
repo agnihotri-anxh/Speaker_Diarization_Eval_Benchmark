@@ -6,106 +6,89 @@
 <style>
   @page {
     size: A4;
-    margin: 16mm 14mm 16mm 14mm;
+    margin: 14mm 14mm 14mm 14mm;
     @bottom-right {
       content: counter(page);
-      font-size: 9pt;
-      color: #718096;
+      font-size: 8.5pt;
+      color: #94a3b8;
     }
   }
   
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #1a202c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+    color: #1e293b;
     line-height: 1.55;
-    font-size: 10pt;
-    margin: 0;
-    padding: 0;
+    font-size: 9.5pt;
     background: #ffffff;
   }
 
   .header {
-    border-bottom: 2px solid #2b6cb0;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
   }
   .title-group h1 {
-    font-size: 20pt;
-    color: #1a365d;
-    margin: 0 0 4px 0;
+    font-size: 18pt;
+    color: #0f172a;
     font-weight: 800;
     letter-spacing: -0.5px;
+    margin-bottom: 2px;
   }
   .title-group .subtitle {
-    font-size: 11pt;
-    color: #4a5568;
-    font-weight: 500;
+    font-size: 10.5pt;
+    color: #475569;
+    font-weight: 600;
   }
   .meta-tag {
     text-align: right;
-    font-size: 8.5pt;
-    color: #718096;
-    line-height: 1.3;
-  }
-  .badge {
-    display: inline-block;
-    background: #ebf8ff;
-    color: #2b6cb0;
-    border: 1px solid #bee3f8;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 700;
     font-size: 8pt;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #64748b;
+    line-height: 1.3;
   }
 
   h2 {
-    font-size: 13pt;
-    color: #2b6cb0;
+    font-size: 12pt;
+    color: #1e40af;
     border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 4px;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    font-weight: 700;
+    padding-bottom: 3px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: 800;
     break-after: avoid;
   }
   h3 {
-    font-size: 10.5pt;
-    color: #2d3748;
-    margin-top: 14px;
-    margin-bottom: 6px;
+    font-size: 10pt;
+    color: #0f172a;
+    margin-top: 12px;
+    margin-bottom: 4px;
     font-weight: 700;
     break-after: avoid;
   }
 
-  p { margin: 0 0 9px 0; }
+  p { margin: 0 0 8px 0; }
   ul, ol { margin: 0 0 10px 0; padding-left: 20px; }
-  li { margin-bottom: 4px; }
+  li { margin-bottom: 3px; }
 
   .callout {
-    background: #f7fafc;
-    border-left: 4px solid #3182ce;
-    padding: 10px 14px;
-    margin: 12px 0;
+    background: #f8fafc;
+    border-left: 3px solid #2563eb;
+    padding: 8px 12px;
+    margin: 10px 0;
     border-radius: 0 4px 4px 0;
-    font-size: 9.5pt;
+    font-size: 9pt;
   }
-  .callout-title {
-    font-weight: 700;
-    color: #2c5282;
-    margin-bottom: 3px;
-  }
+  .callout strong { color: #0f172a; }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 12px 0 16px 0;
-    font-size: 8.5pt;
+    margin: 10px 0 14px 0;
+    font-size: 8pt;
     break-inside: avoid;
   }
   th, td {
@@ -115,42 +98,41 @@
     vertical-align: top;
   }
   th {
-    background: #edf2f7;
-    color: #2d3748;
+    background: #f1f5f9;
+    color: #1e293b;
     font-weight: 700;
   }
   tr:nth-child(even) td {
     background: #f8fafc;
   }
 
-  .formula-box {
-    background: #f7fafc;
+  .formula-card {
+    background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 6px;
-    padding: 10px 14px;
-    margin: 10px 0;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 9.5pt;
-    color: #1a202c;
+    padding: 8px 12px;
+    margin: 8px 0 12px 0;
+    font-family: monospace;
+    font-size: 9pt;
   }
 
   .grid-2 {
     display: flex;
-    gap: 12px;
-    margin: 10px 0;
+    gap: 10px;
+    margin: 8px 0;
   }
   .col-2 {
     flex: 1;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 4px;
-    padding: 10px;
+    padding: 8px 10px;
     break-inside: avoid;
   }
   .col-2 h4 {
-    margin: 0 0 6px 0;
-    color: #2b6cb0;
-    font-size: 9.5pt;
+    margin: 0 0 4px 0;
+    color: #1e40af;
+    font-size: 9pt;
   }
 
   .page-break {
@@ -158,119 +140,99 @@
     break-before: page;
   }
 
-  .chart-container {
+  .chart-box {
     text-align: center;
-    margin: 14px 0;
+    margin: 12px 0;
     break-inside: avoid;
   }
-  .chart-container img {
+  .chart-box img {
     max-width: 95%;
     height: auto;
     border: 1px solid #e2e8f0;
     border-radius: 6px;
   }
   .chart-caption {
-    font-size: 8.5pt;
-    color: #718096;
-    margin-top: 4px;
+    font-size: 8pt;
+    color: #64748b;
+    margin-top: 3px;
     font-style: italic;
   }
-  .pipeline-container {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin: 12px 0;
-  }
+
   .pipeline-step {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: baseline;
-    margin-bottom: 8px;
-    font-size: 9pt;
+    margin-bottom: 6px;
+    font-size: 8.5pt;
   }
-  .pipeline-step:last-child {
-    margin-bottom: 0;
-  }
-  .step-num {
-    background: #2b6cb0;
+  .step-badge {
+    background: #2563eb;
     color: white;
     font-size: 7.5pt;
     font-weight: 800;
-    padding: 2px 7px;
+    padding: 2px 6px;
     border-radius: 4px;
     white-space: nowrap;
-    text-transform: uppercase;
-  }
-  .step-body {
-    flex: 1;
-    color: #2d3748;
   }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1: PURPOSE & PERSONAS -->
+<!-- HEADER -->
 <div class="header">
   <div class="title-group">
-    <span class="badge">Voice Arena Research & Product Specification</span>
-    <h1>Speaker Diarization Evaluation Framework</h1>
-    <div class="subtitle">Architectural Blueprint & Public Leaderboard Methodology</div>
+    <h1>Voice Arena — Speaker Diarization Benchmark</h1>
+    <div class="subtitle">Complete Evaluation Methodology & Technical Specification</div>
   </div>
   <div class="meta-tag">
     <strong>Author:</strong> Ansh Agnihotri<br>
-    <strong>Document:</strong> Q1_Main Specification<br>
-    <strong>Version:</strong> 1.0 (Production Release)
+    <strong>Role:</strong> Lead Research & Product Evaluation<br>
+    <strong>Document:</strong> Q1_Main Specification
   </div>
 </div>
 
-<h2>1. Purpose & Strategic Target Audience</h2>
+<h2>1. Purpose: Who This Benchmark Is For & The Decisions They Make</h2>
 <p>
-  Speaker Diarization answers <strong>"Who spoke when?"</strong> in conversational audio without prior voice enrollment or knowledge of speaker identities. While transcription converts speech to text, diarization establishes turn attribution, conversational dynamics, and accountability.
+  Speaker Diarization answers a deceptively simple question: <strong>"Who spoke when?"</strong> in an audio recording. While Speech-to-Text converts audio into words, diarization assigns each word to a speaker label (e.g., <em>Speaker 0</em> vs. <em>Speaker 1</em>) without knowing who the people are or how many there are in advance.
 </p>
 <p>
-  Current commercial marketing is plagued by unverified claims of "99% diarization accuracy" evaluated on pristine, synthetic audio. When deployed in production environments—characterized by rapid cross-talk, acoustic room reverberation, soft whispers, and packet loss—these systems suffer catastrophic degradation. <strong>The Voice Arena Leaderboard is designed as an independent, multi-dimensional decision engine</strong> that enables enterprise engineering and product leaders to answer:
+  Today, every voice vendor claims <strong>"99% accuracy"</strong> in their marketing. But in the real world—when people interrupt each other, use AirPods in a noisy cafe, or speak over a scratchy 8 kHz phone line—those systems fail. <strong>Voice Arena is an independent public leaderboard</strong> that helps engineering teams choose the right model based on verified, real-world data.
 </p>
 
-<div class="callout">
-  <div class="callout-title">Core Strategic Mission</div>
-  Which diarization system truly delivers the required accuracy, latency, and cost profile for our specific acoustic domain, where does each system fail, and how do we make an evidence-based build vs. buy choice?
-</div>
-
-<h3>Target Personas & Decisive User Choices</h3>
+<h3>The 4 Core Buyer Personas</h3>
 <table>
   <thead>
     <tr>
-      <th style="width: 22%;">Target Persona</th>
-      <th style="width: 28%;">Operational Environment</th>
-      <th style="width: 30%;">Critical Business Decision</th>
-      <th style="width: 20%;">Cost of Failure</th>
+      <th style="width: 22%;">Buyer Persona</th>
+      <th style="width: 28%;">Acoustic Environment</th>
+      <th style="width: 28%;">The Critical Business Decision</th>
+      <th style="width: 22%;">Cost of Model Failure</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>1. B2B Meeting Assistants</strong><br><em>(Notion AI, Zoom Companion, Otter.ai, Fireflies)</em></td>
-      <td>3 to 8 speakers; laptop microphones and AirPods; heavy conversational overlap (laughter, interruptions); background mechanical keyboard clicking.</td>
-      <td><strong>Model Choice:</strong> Deciding whether an offline neural model (pyannote) or cloud ASR API (Deepgram) minimizes missed action-item attribution during 6-person sprint reviews under $0.015/min.</td>
-      <td>Action items attributed to the wrong engineer or product manager, destroying user trust in automated meeting summaries.</td>
+      <td><strong>1. Meeting Assistants</strong><br><em>(Notion AI, Zoom, Otter)</em></td>
+      <td>3 to 8 people; laptop mics and AirPods; constant interruptions, laughter, and keyboard noise.</td>
+      <td>Which model accurately tracks action items during multi-person cross-talk for under $0.015/min?</td>
+      <td>Action items attributed to the wrong team member, destroying user trust in meeting summaries.</td>
     </tr>
     <tr>
-      <td><strong>2. Contact Center Intelligence</strong><br><em>(Gong, Talkdesk, Cresta, Balto)</em></td>
-      <td>Strictly 2 speakers (Agent vs Customer); 8 kHz narrowband telephony audio; aggressive Opus/G.711 compression artifacts; fast customer interruptions.</td>
-      <td><strong>Streaming vs Batch:</strong> Choosing between a real-time streaming engine (&lt;500ms latency) for live agent prompting vs low-cost batch processing at scale (&lt;$0.005/min).</td>
-      <td><strong>Speaker Flipping:</strong> Inverting Agent and Customer roles causes sentiment models to flag the customer as angry and the agent as non-compliant.</td>
+      <td><strong>2. Contact Centers</strong><br><em>(Gong, Talkdesk, Cresta)</em></td>
+      <td>Strictly 2 people (Agent vs. Customer); 8 kHz phone lines; cellular compression artifacts.</td>
+      <td>Which model guarantees near-zero speaker-flipping on phone audio with sub-300ms streaming speed?</td>
+      <td><strong>Speaker Flipping:</strong> Labeling the customer as the agent flags good customer reps as hostile in QA audits.</td>
     </tr>
     <tr>
-      <td><strong>3. Ambient Clinical Scribes</strong><br><em>(Abridge, Suki AI, Nuance DAX, Nabla)</em></td>
-      <td>2 to 4 speakers (Physician, Patient, Family member); far-field tablet capture (8–10 ft away); high reverberation; soft, hesitant patient speech.</td>
-      <td><strong>Deployment Modality:</strong> Selecting an engine that can run on-premise / private VPC for HIPAA compliance with near-zero missed speech on quiet voices.</td>
-      <td>Attributing an allergy or medication statement to the physician rather than the patient creates catastrophic medical liability.</td>
+      <td><strong>3. Medical Scribes</strong><br><em>(Abridge, Suki, Epic)</em></td>
+      <td>Doctor, patient, and family member; far-field tablet mic; quiet or hesitant patient speech.</td>
+      <td>Which model runs securely on-premise (HIPAA) with zero missed patient statements?</td>
+      <td>Attributing a symptom or allergy statement to the doctor creates severe medical liability.</td>
     </tr>
     <tr>
-      <td><strong>4. Media & Legal Transcription</strong><br><em>(Descript, Rev.com, Court Reporting)</em></td>
-      <td>2 to 10+ speakers; broadcast debates, depositions; exact word-level editing and legal attribution.</td>
-      <td><strong>Boundary Precision:</strong> Selecting an engine with sub-100ms cut accuracy (Word Flop Error Rate &lt; 2%) so automated cuts do not clip words.</td>
-      <td>Mutilated audio edits and inadmissible legal transcripts with misattributed witness testimony.</td>
+      <td><strong>4. Media & Legal</strong><br><em>(Descript, Rev, Court Scribes)</em></td>
+      <td>Courtrooms, debates, podcasts; exact word-level audio editing and legal attribution.</td>
+      <td>Which model provides sub-100ms cut accuracy so automated audio cuts don't slice off words?</td>
+      <td>Mutilated podcast cuts and legally disputed court deposition transcripts.</td>
     </tr>
   </tbody>
 </table>
@@ -278,299 +240,264 @@
 <!-- PAGE BREAK: MODELS & FAIRNESS -->
 <div class="page-break"></div>
 
-<h2>2. Models & Systems Under Evaluation</h2>
+<h2>2. Evaluated Systems & How We Keep Testing Fair</h2>
 <p>
-  To deliver practical commercial utility, Voice Arena benchmarks <strong>10 named, industry-leading systems</strong> spanning self-hosted open-source neural models, on-device edge engines, and commercial Speech-to-Text APIs with integrated diarization:
+  We evaluate <strong>10 named speech models</strong> spanning self-hosted open-source models, on-device edge engines, and commercial cloud APIs:
 </p>
 
 <table>
   <thead>
     <tr>
       <th>#</th>
-      <th>Company / Provider</th>
-      <th>Exact Model Name</th>
-      <th>Architectural Category</th>
-      <th>Execution Modality</th>
-      <th>Primary Target Strength</th>
+      <th>System Name</th>
+      <th>Provider / Company</th>
+      <th>Type</th>
+      <th>How It Runs</th>
+      <th>Primary Real-World Strength</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>1</strong></td>
-      <td>Hugging Face / Open Source</td>
       <td><strong>pyannote.audio 3.1</strong></td>
-      <td>Standalone Neural Diarizer</td>
-      <td>Self-Hosted (GPU: NVIDIA A10G)</td>
-      <td>SOTA overlapping speech detection & acoustic clustering.</td>
+      <td>Hervé Bredin / Hugging Face</td>
+      <td>Standalone Diarizer</td>
+      <td>Self-Hosted (A10G GPU)</td>
+      <td>Best-in-class multi-speaker overlap and cross-talk detection.</td>
     </tr>
     <tr>
       <td><strong>2</strong></td>
-      <td>NVIDIA</td>
-      <td><strong>NeMo Sortaformer</strong></td>
-      <td>End-to-End Neural (EEND)</td>
-      <td>Self-Hosted (Triton / TensorRT)</td>
-      <td>Fast streaming & offline transformer frame diarization.</td>
+      <td><strong>Deepgram Nova-3</strong></td>
+      <td>Deepgram Inc.</td>
+      <td>Cloud ASR + Diarization</td>
+      <td>Cloud API (Streaming)</td>
+      <td>Blazing sub-200ms latency and exceptional 8 kHz phone accuracy.</td>
     </tr>
     <tr>
       <td><strong>3</strong></td>
-      <td>Picovoice</td>
-      <td><strong>Picovoice Falcon</strong></td>
-      <td>On-Device Standalone Diarizer</td>
-      <td>Self-Hosted (Local CPU Edge)</td>
-      <td>Zero network latency, 100% on-device data privacy.</td>
+      <td><strong>WhisperX + pyannote</strong></td>
+      <td>m-bain (Open Source)</td>
+      <td>Pipeline (ASR + Forced Align)</td>
+      <td>Self-Hosted (A10G GPU)</td>
+      <td>High-precision word-level alignment for offline transcripts.</td>
     </tr>
     <tr>
       <td><strong>4</strong></td>
-      <td>Open Source (m-bain)</td>
-      <td><strong>WhisperX (v3) + pyannote</strong></td>
-      <td>ASR + Forced Alignment Pipeline</td>
-      <td>Self-Hosted (GPU: A10G)</td>
-      <td>High-precision word-level acoustic alignment.</td>
+      <td><strong>AssemblyAI Universal-2</strong></td>
+      <td>AssemblyAI</td>
+      <td>Cloud ASR + Diarization</td>
+      <td>Cloud REST API</td>
+      <td>Strong conversational vocabulary and turn formatting.</td>
     </tr>
     <tr>
       <td><strong>5</strong></td>
-      <td>Deepgram Inc.</td>
-      <td><strong>Deepgram Nova-3 (Diarize)</strong></td>
-      <td>Commercial ASR + Diarization</td>
-      <td>Cloud REST / WebSocket API</td>
-      <td>Ultra-low streaming latency (&lt;300ms) & telephony robustness.</td>
+      <td><strong>NVIDIA NeMo Sortaformer</strong></td>
+      <td>NVIDIA AI Research</td>
+      <td>End-to-End Neural (EEND)</td>
+      <td>Self-Hosted (Triton Server)</td>
+      <td>Fast transformer frame diarization for enterprise GPU fleets.</td>
     </tr>
     <tr>
       <td><strong>6</strong></td>
-      <td>AssemblyAI</td>
-      <td><strong>Universal-2 (Speaker Diarize)</strong></td>
-      <td>Commercial ASR + Diarization</td>
+      <td><strong>Rev AI Diarization</strong></td>
+      <td>Rev.com</td>
+      <td>Cloud ASR + Diarization</td>
       <td>Cloud REST API</td>
-      <td>High conversational vocabulary & turn segmentation.</td>
+      <td>Trained on massive human-transcribed conversational corpora.</td>
     </tr>
     <tr>
       <td><strong>7</strong></td>
-      <td>Google Cloud</td>
-      <td><strong>Cloud Speech-to-Text v2 (Chirp 2)</strong></td>
-      <td>Commercial Cloud API</td>
-      <td>Cloud gRPC / REST API</td>
+      <td><strong>Google Cloud STT v2</strong></td>
+      <td>Google Cloud (Chirp 2)</td>
+      <td>Cloud Speech Service</td>
+      <td>Cloud gRPC / REST</td>
       <td>Multi-lingual scale and global infrastructure.</td>
     </tr>
     <tr>
       <td><strong>8</strong></td>
-      <td>Amazon Web Services</td>
       <td><strong>AWS Transcribe</strong></td>
-      <td>Commercial Cloud Service</td>
+      <td>Amazon Web Services</td>
+      <td>Cloud Speech Service</td>
       <td>Cloud SDK (boto3)</td>
-      <td>Enterprise AWS ecosystem integration & multichannel routing.</td>
+      <td>Enterprise AWS ecosystem and contact center routing.</td>
     </tr>
     <tr>
       <td><strong>9</strong></td>
-      <td>Rev.com</td>
-      <td><strong>Rev AI Diarization API</strong></td>
-      <td>Commercial ASR + Diarization</td>
-      <td>Cloud REST API</td>
-      <td>Acoustically trained on massive human-transcribed corpora.</td>
+      <td><strong>Picovoice Falcon</strong></td>
+      <td>Picovoice Inc.</td>
+      <td>On-Device Edge Diarizer</td>
+      <td>Local Laptop / Device CPU</td>
+      <td>Zero network latency, 100% private on-device data processing.</td>
     </tr>
     <tr>
       <td><strong>10</strong></td>
-      <td>Microsoft</td>
       <td><strong>Azure Cognitive Speech</strong></td>
-      <td>Commercial Cloud API</td>
-      <td>Cloud SDK & Docker Container</td>
+      <td>Microsoft Azure</td>
+      <td>Cloud Speech Service</td>
+      <td>Cloud SDK & Container</td>
       <td>Hybrid cloud-edge conversation transcription.</td>
     </tr>
   </tbody>
 </table>
 
-<h3>Standardizing Fairness Across Heterogeneous Architectures</h3>
+<h3>Solving the Fairness Challenge Across Different Architectures</h3>
 <p>
-  Evaluating standalone acoustic interval diarizers alongside speech-to-text APIs creates severe apples-to-oranges risks. Voice Arena enforces four non-negotiable normalization rules:
+  Comparing a standalone acoustic interval engine (like <code>pyannote</code>) against a full speech-to-text API (like <code>Deepgram</code>) is an apples-to-oranges challenge. We enforce four strict fairness rules:
 </p>
 <div class="grid-2">
   <div class="col-2">
-    <h4>1. Dual-Track Normalization Protocol</h4>
-    <p><strong>Acoustic Interval Track:</strong> For word-level ASR APIs (Deepgram, AssemblyAI), adjacent words assigned to the same speaker are merged into continuous RTTM segments if the intervening pause is &lt;300ms.</p>
-    <p><strong>Word Attribution Track:</strong> For acoustic diarizers (pyannote), a frozen baseline transcript (Whisper Large-v3 + forced alignment) is projected onto predicted speaker intervals to score word-level attribution.</p>
+    <h4>1. 300ms Pause-Bridging Rule</h4>
+    <p>ASR APIs output word timestamps with blank spaces between words. Standalone diarizers output continuous speech blocks. To level the playing field, we bridge consecutive same-speaker words separated by &lt;300ms into a continuous RTTM segment.</p>
   </div>
   <div class="col-2">
     <h4>2. Strict Blind Diarization ($k = \text{Unknown}$)</h4>
-    <p>In production, systems are never informed whether a meeting has 3 or 7 speakers. Allowing systems to accept <code>min_speakers</code> or <code>max_speakers</code> artificially deflates error rates by 30–50%.</p>
-    <p><strong>Rule:</strong> All primary leaderboard rankings strictly evaluate blind speaker clustering without oracle hints.</p>
+    <p>Many commercial APIs allow passing <code>num_speakers=2</code>. Giving the AI a speaker count in advance artificially deflates errors by 30–50%. We evaluate all systems <strong>blindly</strong> without hints.</p>
   </div>
 </div>
 <div class="grid-2">
   <div class="col-2">
-    <h4>3. Uniform Audio Ingestion & Codec Standard</h4>
-    <p>All models receive bit-for-bit identical 16-bit PCM WAV audio. Telephony benchmarks are systematically downsampled to 8 kHz mono prior to API ingestion to replicate actual telecom trunks.</p>
+    <h4>3. Identical Audio Input</h4>
+    <p>All models receive bit-for-bit identical 16-bit PCM WAV audio. Phone tests are downsampled to 8 kHz mono prior to testing to replicate true telecom trunks.</p>
   </div>
   <div class="col-2">
-    <h4>4. Standardized Hardware & Latency Accounting</h4>
-    <p>Self-hosted models run on fixed hardware (AWS <code>g5.xlarge</code> with NVIDIA A10G, 24GB VRAM). We record Real-Time Factor (RTF = Processing Time / Audio Duration) and P95 latency.</p>
+    <h4>4. Standardized Hardware Baseline</h4>
+    <p>All self-hosted models are benchmarked on fixed cloud hardware (AWS <code>g5.xlarge</code> with NVIDIA A10G 24GB VRAM) to make latency and cost calculations reproducible.</p>
   </div>
 </div>
 
-<!-- PAGE BREAK: TEST DATA & GROUND TRUTH -->
+<!-- PAGE BREAK: TEST DATA & ANNOTATION -->
 <div class="page-break"></div>
 
-<h2>3. Test Dataset Architecture & Ground Truth Curation</h2>
+<h2>3. Test Audio & Ground Truth Curation</h2>
 <p>
-  To prevent data contamination (models memorizing public corpora), Voice Arena deploys a <strong>50-Hour Curated Test Corpus</strong> comprising 250 distinct recordings stratified across 4 realistic production domains:
+  To prevent vendors from gaming the leaderboard by training on public YouTube clips, Voice Arena deploys a <strong>50-Hour Curated Test Corpus</strong> (250 distinct recordings) stratified across 4 realistic production domains:
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>Domain Slice</th>
+      <th>Acoustic Domain</th>
       <th>Hours / Sessions</th>
-      <th>Speaker Dynamics</th>
-      <th>Acoustic & Hardware Profile</th>
+      <th>Speaker Count</th>
+      <th>Acoustic Profile</th>
       <th>Overlap %</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>B2B Virtual Meetings</strong></td>
-      <td>20.0 hrs / 50 sessions</td>
-      <td>3 to 8 speakers</td>
-      <td>Zoom / Google Meet; MacBook mics, AirPods, conference pucks; keyboard clatter.</td>
+      <td><strong>B2B Team Meetings</strong></td>
+      <td>20.0 hrs / 50 calls</td>
+      <td>3 to 8 people</td>
+      <td>Zoom / Google Meet; laptop mics, AirPods; keyboard clatter and interruptions.</td>
       <td>12% – 18%</td>
     </tr>
     <tr>
       <td><strong>Contact Center Telephony</strong></td>
       <td>15.0 hrs / 60 calls</td>
-      <td>Strictly 2 speakers</td>
-      <td>8 kHz G.711 / Opus; cellular compression, packet jitter, hold music, fast replies.</td>
+      <td>Strictly 2 people</td>
+      <td>8 kHz phone audio; G.711 / Opus codecs; fast replies and hold music.</td>
       <td>4% – 8%</td>
     </tr>
     <tr>
-      <td><strong>Ambient Clinical Consults</strong></td>
-      <td>10.0 hrs / 30 sessions</td>
-      <td>2 to 4 speakers</td>
-      <td>Far-field tablet placement (8–10 ft); drywall/tile reverberation; soft elderly speech.</td>
+      <td><strong>Clinical Healthcare</strong></td>
+      <td>10.0 hrs / 30 visits</td>
+      <td>2 to 4 people</td>
+      <td>Far-field tablet mic (8–10 ft away); room reverberation; quiet patient voices.</td>
       <td>6% – 10%</td>
     </tr>
     <tr>
-      <td><strong>Broadcast Debates & Media</strong></td>
-      <td>5.0 hrs / 15 sessions</td>
-      <td>4 to 10 speakers</td>
-      <td>Dynamic contentious panels, loud interruptions, variable vocal pitch.</td>
+      <td><strong>Debates & Panels</strong></td>
+      <td>5.0 hrs / 15 panels</td>
+      <td>4 to 10 people</td>
+      <td>Loud contentious cross-talk, rapid speaker transitions, pitch shifts.</td>
       <td>15% – 25%</td>
     </tr>
   </tbody>
 </table>
 
-<h3>Demographic & Dialect Diversity Protocol</h3>
+<h3>Building the 100% Correct Answer Key (Reference Pipeline)</h3>
 <p>
-  The corpus enforces strict dialect stratification: 40% Standard American English, 20% British/Commonwealth, 20% Indian English, and 20% Non-native ESL speakers (European, East Asian, Hispanic accents). This guarantees systems are evaluated against real-world phonetic variability.
+  A benchmark is only as good as its answer key. We follow a 4-step curation protocol to guarantee human annotations are accurate down to the millisecond:
 </p>
 
-<h3>Rigorous Ground-Truth (Reference) Construction Pipeline</h3>
-<p>
-  A benchmark is only as reliable as its ground-truth answer key. Human annotator error is the single biggest cause of noisy benchmark rankings. Voice Arena establishes a 4-stage reference curation protocol:
-</p>
-
-<div class="pipeline-container">
+<div class="callout">
   <div class="pipeline-step">
-    <div class="step-num">Stage 1</div>
-    <div class="step-body">
-      <strong>Dual Independent Human Annotation:</strong> Two expert annotators independently mark interval boundaries and speaker tags in Label Studio.
-    </div>
+    <span class="step-badge">Stage 1</span>
+    <span><strong>Dual Human Labeling:</strong> Two independent annotators mark speech boundaries and speaker IDs in Label Studio.</span>
   </div>
   <div class="pipeline-step">
-    <div class="step-num">Stage 2</div>
-    <div class="step-body">
-      <strong>Forced Phoneme Alignment (MFA):</strong> Montreal Forced Aligner locks word onsets/offsets to acoustic physical plosives and fricatives, reducing human boundary jitter to &lt;30ms.
-    </div>
+    <span class="step-badge">Stage 2</span>
+    <span><strong>Forced Alignment:</strong> Montreal Forced Aligner (MFA) snaps boundaries to exact physical acoustic plosives and vowels.</span>
   </div>
   <div class="pipeline-step">
-    <div class="step-num">Stage 3</div>
-    <div class="step-body">
-      <strong>Statistical Agreement Quality Gate:</strong> Inter-Annotator Agreement (Cohen's Kappa) must exceed 0.92. Any frame discrepancy &gt; 100ms triggers mandatory human review.
-    </div>
+    <span class="step-badge">Stage 3</span>
+    <span><strong>Quality Gate:</strong> Inter-Annotator Agreement (Cohen's Kappa) must exceed 0.92. Any discrepancy &gt;100ms is flagged.</span>
   </div>
   <div class="pipeline-step">
-    <div class="step-num">Stage 4</div>
-    <div class="step-body">
-      <strong>Senior Phonetician Adjudication:</strong> Master speech scientist reconciles disputes to generate finalized Golden Reference RTTMs.
-    </div>
+    <span class="step-badge">Stage 4</span>
+    <span><strong>Adjudication:</strong> A senior speech scientist resolves flagged segments to finalize the Golden Reference files.</span>
   </div>
 </div>
 
 <!-- PAGE BREAK: METRICS & RULES -->
 <div class="page-break"></div>
 
-<h2>4. Evaluation Metrics & Scoring Rules</h2>
+<h2>4. Scoring Metrics & Ground Rules</h2>
 
 <h3>1. Primary Metric: Diarization Error Rate (DER)</h3>
 <p>
-  DER represents the fraction of ground-truth speech time that is incorrectly attributed. It is mathematically defined as:
+  DER measures the percentage of speech time that the AI got wrong. It is the sum of three simple mistake types:
 </p>
-<div class="formula-box">
-  DER = (T_miss + T_fa + T_spkerr) / T_total<br><br>
-  Where:<br>
-  • T_total  = Total active duration of all ground-truth reference speech.<br>
-  • T_miss   = Missed Speech: Reference is active, but system outputs silence.<br>
-  • T_fa     = False Alarm: Reference is silent, but system predicts active speech.<br>
-  • T_spkerr = Speaker Confusion: System predicts speech, but maps it to wrong speaker cluster.
+<div class="formula-card">
+  DER = (Missed Speech + False Alarm + Wrong Speaker) / Total Ground-Truth Speech Time<br><br>
+  • Missed Speech: A person was talking, but the AI output silence.<br>
+  • False Alarm: Nobody was talking (breath or noise), but the AI claimed someone spoke.<br>
+  • Wrong Speaker: Someone spoke, but the AI attributed it to the wrong person.
 </div>
 
-<h3>2. Supporting Diagnostic Metrics</h3>
-<ul>
-  <li><strong>Jaccard Error Rate (JER):</strong> Evaluates speaker clustering with equal weight across all speakers, preventing a single dominant speaker who talks for 70% of a call from masking poor clustering on minority speakers:
-    <div class="formula-box">
-      JER = 1 - (1 / |S_ref|) * Σ [ max_(s' in S_hyp) ( |T(s) ∩ T(s')| / |T(s) ∪ T(s')| ) ]
-    </div>
-  </li>
-  <li><strong>Word Flop Error Rate (WFER):</strong> The percentage of transcribed words assigned to the wrong speaker. Directly actionable for product teams building automated meeting summaries and legal transcripts.</li>
-  <li><strong>Overlap Diarization Error Rate (Overlap-DER):</strong> DER calculated exclusively on audio frames where two or more speakers are talking concurrently.</li>
-  <li><strong>Operational Metrics:</strong> Real-Time Factor (RTF), Streaming P95 Latency (ms), and Cost per Audio Hour ($/hr).</li>
-</ul>
-
-<h3>Pivotal Scoring Rule Choices & Engineering Justification</h3>
+<h3>2. The 3 Crucial Ground Rules</h3>
 <table>
   <thead>
     <tr>
       <th>Scoring Setting</th>
-      <th>Benchmark Setting</th>
-      <th>Engineering & Product Rationale</th>
+      <th>Our Standard</th>
+      <th>Why It Matters to Product Teams</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Collar Tolerance Window</strong></td>
-      <td><strong>Dual Reporting: 0ms (Default) & 250ms (Toggle)</strong></td>
-      <td>Academic challenges (DIHARD, AMI) apply a 250ms collar to forgive human boundary variance. However, conversational voice agents and live meeting summaries fail if turn boundaries are off by 250ms. Voice Arena makes <strong>0ms collar the default ranker</strong> to evaluate boundary precision, while providing 250ms for backwards literature compatibility.</td>
+      <td><strong>Collar Tolerance (Grace Period)</strong></td>
+      <td><strong>0ms Default (No Grace Period)</strong></td>
+      <td>Academic tests give a 250ms buffer, forgiving late starts. But in real-time voice agents, a 250ms delay makes the AI interrupt people awkwardly. 0ms tests true boundary precision.</td>
     </tr>
     <tr>
       <td><strong>Overlapping Speech</strong></td>
-      <td><strong>Included & Scored</strong></td>
-      <td>Excluding overlapping speech hides the primary point of failure for voice AI products. Cross-talk represents 10–15% of business meetings; scoring overlap is mandatory for production validity.</td>
+      <td><strong>Included & Scored Separately</strong></td>
+      <td>Cross-talk represents 10–15% of business meetings. Excluding overlap hides where commercial models fail most severely.</td>
     </tr>
     <tr>
-      <td><strong>Speaker Count Prior ($k$)</strong></td>
-      <td><strong>Blind Mode ($k = \text{Unknown}$)</strong></td>
-      <td>In commercial software, the system does not know speaker counts in advance. Blind estimation tests the clustering algorithm's true capability.</td>
+      <td><strong>Speaker Count Knowledge</strong></td>
+      <td><strong>Blind ($k = \text{Unknown}$)</strong></td>
+      <td>In production, software never knows speaker counts beforehand. Blind testing tests true clustering ability.</td>
     </tr>
   </tbody>
 </table>
 
-<!-- PAGE BREAK: EMPIRICAL PILOT EXPERIMENT -->
+<!-- PAGE BREAK: PILOT RESULTS -->
 <div class="page-break"></div>
 
-<h2>5. Empirical Pilot Benchmark: Running Real Systems on Real Audio</h2>
+<h2>5. Empirical Pilot Results: Running Real Systems on Real Audio</h2>
 <p>
-  To validate our evaluation methodology, we implemented a complete, production-grade scoring harness adhering to dscore and NIST MD-Eval standards, and executed a pilot benchmark across <strong>3 systems on 3 canonical real-world audio datasets</strong>:
+  We implemented a NIST/dscore-compliant scoring engine (<code>experiments/run_pilot_eval.py</code>) reading standard RTTM files from disk, testing 3 diverse systems across 3 canonical datasets:
 </p>
-<ul>
-  <li><strong>Test 1: AMI Meeting Corpus (ES2004a)</strong> — 4 speakers, high conversational overlap, conference room acoustics.</li>
-  <li><strong>Test 2: VoxConverse Political Debate</strong> — 3 speakers, broadcast audio, rapid contentious interruptions.</li>
-  <li><strong>Test 3: Telephony Support Call</strong> — 2 speakers (Agent vs Customer), 8 kHz narrowband telephony audio.</li>
-</ul>
 
-<h3>Empirical Results Table (Scored at 0ms Collar vs 250ms Collar)</h3>
 <table>
   <thead>
     <tr>
       <th>Dataset</th>
-      <th>Evaluated System</th>
-      <th>DER @ 0ms</th>
-      <th>DER @ 250ms</th>
+      <th>Model</th>
+      <th>DER @ 0ms (Strict)</th>
+      <th>DER @ 250ms (Forgiving)</th>
       <th>Miss %</th>
       <th>FA %</th>
       <th>SpkErr %</th>
@@ -580,7 +507,7 @@
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3"><strong>AMI Meeting<br>(4 Spks, High Overlap)</strong></td>
+      <td rowspan="3"><strong>AMI Meeting<br>(4 People, Cross-Talk)</strong></td>
       <td><strong>pyannote.audio 3.1</strong></td>
       <td><strong>3.07%</strong></td>
       <td><strong>0.11%</strong></td>
@@ -611,38 +538,7 @@
       <td>5.73%</td>
     </tr>
     <tr>
-      <td rowspan="3"><strong>VoxConverse Debate<br>(3 Spks, Fast Turns)</strong></td>
-      <td><strong>pyannote.audio 3.1</strong></td>
-      <td><strong>2.30%</strong></td>
-      <td><strong>0.00%</strong></td>
-      <td>2.30%</td>
-      <td>0.00%</td>
-      <td>0.00%</td>
-      <td><strong>8.53%</strong></td>
-      <td><strong>2.34%</strong></td>
-    </tr>
-    <tr>
-      <td>Deepgram Nova-3</td>
-      <td>5.26%</td>
-      <td>2.27%</td>
-      <td>5.26%</td>
-      <td>0.00%</td>
-      <td>0.00%</td>
-      <td>21.18%</td>
-      <td>5.35%</td>
-    </tr>
-    <tr>
-      <td>WhisperX Baseline</td>
-      <td>5.46%</td>
-      <td>1.75%</td>
-      <td>5.46%</td>
-      <td>0.00%</td>
-      <td>0.00%</td>
-      <td>21.18%</td>
-      <td>5.53%</td>
-    </tr>
-    <tr>
-      <td rowspan="3"><strong>Telephony Support<br>(2 Spks, 8kHz Phone)</strong></td>
+      <td rowspan="3"><strong>Telephony Call Center<br>(2 People, 8 kHz Phone)</strong></td>
       <td><strong>Deepgram Nova-3</strong></td>
       <td><strong>1.03%</strong></td>
       <td><strong>0.00%</strong></td>
@@ -675,22 +571,22 @@
   </tbody>
 </table>
 
-<div class="chart-container">
-  <img src="data:image/png;base64,{{CHART_BREAKDOWN}}" alt="Diarization Error Breakdown">
-  <div class="chart-caption">Figure 1: Empirical Diarization Error Breakdown across 0ms Collar showing Miss, False Alarm, and Speaker Confusion.</div>
+<div class="chart-box">
+  <img src="data:image/png;base64,{{CHART_BREAKDOWN}}" alt="Error Breakdown">
+  <div class="chart-caption">Figure 1: Error breakdown at 0ms collar. Notice how overlap error dominates cloud ASR models.</div>
 </div>
 
 <div class="grid-2">
   <div class="col-2">
-    <div class="chart-container">
-      <img src="data:image/png;base64,{{CHART_COLLAR}}" alt="Collar Sensitivity Curve">
-      <div class="chart-caption">Figure 2: Collar Sensitivity Curve (0ms to 400ms). Notice how 250ms collar hides boundary variance.</div>
+    <div class="chart-box">
+      <img src="data:image/png;base64,{{CHART_COLLAR}}" alt="Collar Curve">
+      <div class="chart-caption">Figure 2: Notice how 250ms collar hides errors compared to 0ms.</div>
     </div>
   </div>
   <div class="col-2">
-    <div class="chart-container">
-      <img src="data:image/png;base64,{{CHART_RADAR}}" alt="Multi-Dimensional Model Radar">
-      <div class="chart-caption">Figure 3: Multi-dimensional trade-off radar across Accuracy, Overlap, Latency, and Cost.</div>
+    <div class="chart-box">
+      <img src="data:image/png;base64,{{CHART_RADAR}}" alt="Model Radar">
+      <div class="chart-caption">Figure 3: Multi-dimensional model comparison across speed, cost, and accuracy.</div>
     </div>
   </div>
 </div>
@@ -698,50 +594,39 @@
 <!-- PAGE BREAK: DECISION PIPELINE & REFLECTION -->
 <div class="page-break"></div>
 
-<h2>6. Statistical Significance & Publishing Standards</h2>
-<p>
-  To ensure enterprise buyers do not make purchasing decisions based on random statistical noise, Voice Arena implements rigorous verification:
-</p>
+<h2>6. Statistical Verification & Avoiding Lucky Winners</h2>
 <ul>
-  <li><strong>Non-Parametric Bootstrap Resampling:</strong> We resample the evaluation sessions with replacement 10,000 times to construct empirical 95% Confidence Intervals for every score.</li>
-  <li><strong>Paired Permutation Tests:</strong> A system is only declared superior to another if the paired permutation test yields $p &lt; 0.01$. If the confidence intervals overlap, the leaderboard flags the systems as statistically tied.</li>
-  <li><strong>Published Metadata Beside Each Score:</strong>
-    1. 95% CI Range (e.g., $3.07\% \pm 0.4\%$).<br>
-    2. Overlap DER vs Non-overlap DER.<br>
-    3. Hardware spec & Real-Time Factor (RTF).<br>
-    4. Exact dollar cost per 1,000 audio hours.<br>
-    5. Frozen model checksum and API endpoint version.
-  </li>
+  <li><strong>10,000 Bootstrap Resamplings:</strong> We resample sessions with replacement 10,000 times to calculate empirical 95% Confidence Intervals for every score.</li>
+  <li><strong>Paired Permutation Tests:</strong> A model is only declared superior to another if $p &lt; 0.01$. If intervals overlap, the leaderboard flags them as statistically tied.</li>
+  <li><strong>Published Metadata:</strong> Beside every score, we publish the 95% CI, Overlap DER, Real-Time Factor (RTF), cost per 1k hours, and exact model version.</li>
 </ul>
 
 <h2>7. Final Reflection (Assessment Questions)</h2>
 
 <h3>1. Which design choice are you least sure about, and why?</h3>
 <div class="callout">
-  <strong>The 300ms inter-word pause bridging threshold for ASR-integrated models.</strong><br>
-  When converting word-level speaker tags into continuous RTTM segments, we bridge same-speaker pauses &lt;300ms. If the threshold is too small (e.g., 100ms), natural breathing silences create artificial fragmented false alarms. If it is too large (e.g., 500ms), it absorbs short backchannel affirmations (<em>"mm-hmm"</em>) from other speakers. While 300ms matches empirical phonetic turn-taking literature, human speech tempo varies across cultures.
+  <strong>The 300ms pause-bridging threshold for speech-to-text models.</strong><br>
+  When converting word timestamps from ASR models into continuous speech blocks, we bridge pauses under 300ms. If the threshold is too small (e.g., 100ms), natural breathing breaks look like false alarms. If it's too large (e.g., 500ms), it absorbs short confirmations (<em>"yeah"</em>) from other speakers. While 300ms aligns with speech science literature, conversational tempo varies across cultures.
 </div>
 
 <h3>2. Which benchmark you read influenced you most, and how?</h3>
 <div class="callout">
   <strong>The Third DIHARD Diarization Challenge (Ryant et al., 2020).</strong><br>
-  DIHARD III fundamentally dismantled the illusion created by clean datasets like AMI. It demonstrated that when audio moves to challenging acoustic spaces, single-channel diarization errors skyrocket from 3% to over 20%. DIHARD pioneered uncollared evaluation and isolated Overlap-DER. Voice Arena takes DIHARD's clinical rigor and redirects it from YouTube clips toward high-value enterprise workflows (telephony, clinical scribing, and enterprise meetings).
+  DIHARD III proved that models that look great on clean academic audio (like AMI) completely collapse in the real world. It pioneered uncollared evaluation (0ms) and proved why blind speaker estimation is essential. We took DIHARD's clinical rigor and applied it to high-value business domains: Zoom meetings, phone calls, and clinical scribes.
 </div>
 
 <h3>3. What could make your leaderboard misleading, and how did you guard against it?</h3>
 <div class="callout">
-  <strong>Two risks: The "Global Average Fallacy" and "Test Set Contamination".</strong><br>
-  1. <em>Global Average Fallacy:</em> Our empirical pilot proved that Deepgram defeats pyannote on 8 kHz telephony, but pyannote dominates Deepgram by 3x on multi-speaker meeting overlap. A single composite score would mislead buyers. We guard against this by providing <strong>Persona-Specific Leaderboard Views</strong> and radar profiles.<br>
-  2. <em>Contamination:</em> Public corpora (VoxConverse, AMI) are frequently included in commercial training sets. We guard against contamination by locking a <strong>Secret Golden Evaluation Split</strong> of newly recorded, unreleased sessions.
+  <strong>The "Single Average Score" Trap.</strong><br>
+  Our pilot proved that Deepgram dominates phone calls, but pyannote dominates team meetings. A single composite average score would mislead a buyer into picking the wrong tool. We guard against this by providing <strong>Domain-Specific Leaderboard Views</strong> and multi-dimensional radar profiles.
 </div>
 
 <h3>4. What would you improve with more time?</h3>
 <div class="callout">
-  <strong>1. Network-Jitter Emulation for Streaming APIs:</strong> Simulating real-world WebRTC packet loss, burst drops, and jitter to observe real-time diarization degradation.<br>
-  <strong>2. Multi-Lingual Code-Switching Slice:</strong> Curating conversations where bilingual speakers alternate languages mid-sentence (e.g., Spanglish or Hinglish), which frequently causes embedding models to split one person into two personas.<br>
-  <strong>3. Downstream LLM Hallucination Impact:</strong> Measuring how diarization errors directly translate into corrupted meeting minutes (e.g., "Hallucinated Action Items per Meeting").
+  <strong>1. Network-Jitter Simulation:</strong> Testing streaming APIs under real-world packet loss to see how internet drops affect diarization.<br>
+  <strong>2. Multi-Lingual Code-Switching:</strong> Testing bilingual conversations where speakers switch between languages mid-sentence (e.g., Hinglish or Spanglish).<br>
+  <strong>3. Downstream LLM Impact:</strong> Measuring how diarization errors directly translate into wrong meeting summaries and corrupted action items.
 </div>
 
 </body>
 </html>
-
